@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { useRouter } from 'next/router'
+import { updateUser } from '../../helpers/api-fetcher'
 import { removeSession } from '../../helpers/utils'
 import { notifications } from '../../helpers/stubs'
 import styles from '../../styles/account/settings/AccountForm.module.scss'
@@ -18,7 +19,42 @@ const CheckNotifications = ({ title = '' }) => {
 const AccountForm = () => {
 
   const router = useRouter()
+  const fname = useRef(null)
+  const lname = useRef(null)
+  const email = useRef(null)
+  const pass = useRef(null)
+  const [accountInfo, setAccountInfo] = useState(null)
   const LOGIN_API_PATH = `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_LOGIN_PATH}`
+
+  const handleOnChange = (e, fieldKey) => {
+    if(e.target.value === ""){
+      let filterOutThis = Object.keys(accountInfo)
+      .filter((key) => key !== fieldKey)
+      .reduce((cur, key) => { return Object.assign(cur, { [key]: accountInfo[key] })}, {})
+      setAccountInfo(filterOutThis)
+    } else {
+        setAccountInfo(prevState => ({...prevState, [fieldKey]: e.target.value}))
+    }
+  }
+
+  const handleDiscard = () => {
+    fname.current.value = ""
+    lname.current.value = ""
+    email.current.value = ""
+    pass.current.value = ""
+    setAccountInfo(null)
+  }
+
+  const handleSubmit = () => {
+    if(accountInfo !== null) {
+      if(confirm("Proceed to update?")) {
+        updateUser(accountInfo)
+        alert("Success")
+      } 
+    } else {
+      alert("Error:")
+    }
+  }
 
   const handleLogout = () => {
     removeSession(LOGIN_API_PATH)
@@ -43,19 +79,19 @@ const AccountForm = () => {
         <div className={styles.textFields}>
           <span className={styles.textFields_items}>
             <p>First name</p>
-            <input type="text" placeholder='First name'/>
+            <input ref={fname} type="text" placeholder='First name' onChange={(e) => handleOnChange(e, 'firstname')}/>
           </span>
           <span className={styles.textFields_items}>
             <p>Last name</p>
-            <input type="text" placeholder='Last name'/>
+            <input ref={lname} type="text" placeholder='Last name'  onChange={(e) => handleOnChange(e, 'lastname')}/>
           </span>
           <span className={styles.textFields_items}>
             <p>Email</p>
-            <input type="email" placeholder='First name'/>
+            <input ref={email} type="email" placeholder='Email' onChange={(e) => handleOnChange(e, 'email')}/>
           </span>
           <span className={styles.textFields_items}>
-            <p>Phone number</p>
-            <input type="text" placeholder='Phone number'/>
+            <p>Password</p>
+            <input ref={pass} type="password" placeholder='Password' onChange={(e) => handleOnChange(e, 'password')}/>
           </span>
         </div>
         <h6>Email notifications</h6>
@@ -65,8 +101,8 @@ const AccountForm = () => {
         <div className={styles.btnWrapper}>
           <button onClick={handleLogout} className={styles.btnWrapper_logout}>Log out</button>
           <div className={styles.btnWrapper_changes}>
-            <button className={styles.discard}>Discard changes</button>
-            <button className={styles.save}>Save changes</button>
+            <button onClick={handleDiscard} className={styles.discard}>Discard changes</button>
+            <button onClick={handleSubmit} className={styles.save}>Save changes</button>
           </div>
         </div>
       </div>

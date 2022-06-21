@@ -11,6 +11,10 @@ export default async function tokenHandler(req, res) {
     })
     const data = await tokenFetch.json()
 
-    res.status(200).json(data)
+    if(tokenFetch.status === 200) {
+      res.status(200).json(data)
+    } else {
+      res.status(tokenFetch.status).json({ message: data.message })
+    }
   }
 }

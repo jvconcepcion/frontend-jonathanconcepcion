@@ -10,6 +10,10 @@ export default async function loginHandler(req, res) {
     })
     const data = await loginFetch.json()
 
-    res.status(200).json(data)
+    if(loginFetch.status === 200) {
+      res.status(200).json(data)
+    } else {
+      res.status(loginFetch.status).json({ message: data.message })
+    }
   }
 }

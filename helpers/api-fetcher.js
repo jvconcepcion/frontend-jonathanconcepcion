@@ -3,7 +3,7 @@ import { setCookies, getCookie  } from 'cookies-next';
 const LOGIN_API_PATH = `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_LOGIN_PATH}`
 
 // POST
-export async function newAccessToken() {
+async function newAccessToken() {
 
   let newLoginState =  JSON.parse(getCookie(LOGIN_API_PATH))
 
@@ -47,4 +47,25 @@ export async function baseCall(
   const data = await res.json()
 
   return data
+}
+
+// PATCH
+export async function updateUser(body) {
+
+  let { accessToken } = await newAccessToken()
+
+  let options = {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Token ${accessToken}`
+    },
+    body: JSON.stringify(body)
+  }
+
+  const res = await fetch('/api/account/update', options)
+
+  const data = await res.json()
+
+  console.log(data)
 }
