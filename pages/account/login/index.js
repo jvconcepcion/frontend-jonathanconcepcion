@@ -29,9 +29,8 @@ const LoginForm = () => {
 
   const fetchWithCache = async (url) => {
     
-    const res = await fetch(url, {
+    const res = await fetch('/api/account/login', {
       method: 'POST',
-      cache: "force-cache",
       headers: {
         'Content-Type': 'application/json'
       },
@@ -71,6 +70,7 @@ const LoginForm = () => {
       <Head>
         <title>Sign in</title>
         <meta name="description" content="Technical Exam" />
+        <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
       </Head>
       <div className={styles.loginContainer}>
         <h1 className={styles.loginHeader}>

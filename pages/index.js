@@ -16,8 +16,6 @@ export default function Home() {
   const [userOrder, setUserOrder] = useState([])
   
   const LOGIN_API_PATH = `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_LOGIN_PATH}`
-  const GROCERY_API_PATH = `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_GROCERIES_PATH}`
-  const GET_ORDER_API_PATH = `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_ORDER_PATH}`
 
   const handleClickCategory = (val) => {
     if (!selectedCategories.includes(val)) {
@@ -29,14 +27,14 @@ export default function Home() {
 
   const getGrocery = async (data) => {
     let groceriesList = await baseCall(
-      GROCERY_API_PATH,
+      '/api/grocery',
       JSON.parse(data)?.refreshToken)
     setGroceries(prevState => ({...prevState, groceriesList}))
   }
 
   const getOrderByUserId = async (data) => {
     let orderList = await baseCall(
-      GET_ORDER_API_PATH, 
+      '/api/order', 
       JSON.parse(data)?.refreshToken, 
       true, 
       `userId=${JSON.parse(data)?.userId}`)
@@ -68,6 +66,7 @@ export default function Home() {
       <Head>
         <title>Homepage</title>
         <meta name="description" content="Technical Exam" />
+        <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
       </Head>
 
       <div className={styles.navWrapper}>

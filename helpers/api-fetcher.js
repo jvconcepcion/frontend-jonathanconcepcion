@@ -1,10 +1,9 @@
-import { setCookies, getCookie, checkCookies  } from 'cookies-next';
+import { setCookies, getCookie  } from 'cookies-next';
 
 const LOGIN_API_PATH = `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_LOGIN_PATH}`
-const REFRESH_TOKEN_PATH = `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_REFRESH_TOKEN_PATH}`
 
 // POST
-export async function newAccessToken(url) {
+export async function newAccessToken() {
 
   let newLoginState =  JSON.parse(getCookie(LOGIN_API_PATH))
 
@@ -16,7 +15,7 @@ export async function newAccessToken(url) {
     body: JSON.stringify({ token: newLoginState.refreshToken})
   }
  
-  const res = await fetch(url, options)
+  const res = await fetch('/api/account/token', options)
   
   const data = await res.json()
 
@@ -31,11 +30,10 @@ export async function newAccessToken(url) {
 // GET
 export async function baseCall(
   url, 
-  refreshToken, 
   withQueryParams = false, 
   queryParams) {
 
-  let { accessToken } = await newAccessToken(REFRESH_TOKEN_PATH)
+  let { accessToken } = await newAccessToken()
 
   let options = {
     method: "GET",
