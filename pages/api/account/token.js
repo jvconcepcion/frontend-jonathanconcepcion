@@ -1,6 +1,5 @@
-const REFRESH_TOKEN_PATH = `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_REFRESH_TOKEN_PATH}`
-
 export default async function tokenHandler(req, res) {
+  const REFRESH_TOKEN_PATH = `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_REFRESH_TOKEN_PATH}`
   if(req.method === 'POST') {
     const tokenFetch = await fetch(REFRESH_TOKEN_PATH, {
       method: 'POST',

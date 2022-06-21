@@ -67,5 +67,30 @@ export async function updateUser(body) {
 
   const data = await res.json()
 
-  console.log(data)
+  return data
+}
+
+// PUT
+export async function registerUser(body) {
+
+  let copyBody = body
+
+  copyBody.permissionLevel = 2
+
+  let options = {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(copyBody)
+  }
+
+  const res = await fetch('/api/account/register', options)
+  // const data = await res.json()
+
+  if(res.status === 200) {
+    alert('User Created!')
+  } else {
+    alert('Account already exists')
+  }
 }
