@@ -12,7 +12,11 @@ export default async function groceryHandler(req, res) {
   
     const groceryFetch = await fetch(GROCERY_API_PATH, options)
     const data = await groceryFetch.json()
-
-    res.status(200).json(data)
+    
+    if(groceryFetch.status === 200) {
+      res.status(200).json(data)
+    } else {
+      res.status(groceryFetch.status).json({ message: data.message })
+    }
   }
 }
