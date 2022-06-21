@@ -12,11 +12,10 @@ const AccountSettings = () => {
   const [userOrder, setUserOrder] = useState([])
 
   const LOGIN_API_PATH = `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_LOGIN_PATH}`
-  const GET_ORDER_API_PATH = `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_ORDER_PATH}`
 
   const getOrderByUserId = async (data) => {
     let orderList = await baseCall(
-      GET_ORDER_API_PATH, 
+      '/api/order', 
       JSON.parse(data)?.refreshToken, 
       true, 
       `userId=${JSON.parse(data)?.userId}`)
@@ -34,6 +33,7 @@ const AccountSettings = () => {
       <Head>
         <title>Account Setting</title>
         <meta name="description" content="Technical Exam" />
+        <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
       </Head>
 
       <div className={styles.navWrapper}>
