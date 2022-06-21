@@ -3,12 +3,26 @@
 .nearbyRestaurantsContainer {
   letter-spacing: 0.1px;
   margin-bottom: 15px;
-  h5 {
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 28px;
-    color: $black;
-    margin: 0 0 16px 0;
+  .headingWrapper {
+    display: flex;
+    align-items: center;
+    h5 {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 28px;
+      color: $black;
+      margin: 0 0 16px 0;
+    }
+
+    .addProduct {
+      cursor: pointer;
+      margin: 0 0 16px 20px;
+      color: $black;
+
+      &:hover {
+        color: $primaryBGColor;
+      }
+    }
   }
 
   .restaurantsContainer {
@@ -23,12 +37,35 @@
       overflow: hidden;
 
       &_imgWrapper {
+        position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
 
         img {
           width: 100%;
+        }
+
+        .editAndDelete {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+
+          .edit {
+            margin-bottom: 10px;
+          }
+
+          .edit, .delete {
+            cursor: pointer;
+            background-color: $defaultBGColor;
+            padding: 1px;
+            border-radius: 5px;
+            &:hover {
+              color: $primaryBGColor;
+            }
+          }
         }
       }
 

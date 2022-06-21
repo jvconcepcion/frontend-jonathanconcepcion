@@ -10,14 +10,14 @@ import Slider from "react-slick"
 
 const LoginForm = () => {
 
-  const router = useRouter();
-  const passwordField = useRef(null);
-  const stayLoginCheckbox = useRef(null);
+  const router = useRouter()
+  const passwordField = useRef(null)
+  const stayLoginCheckbox = useRef(null)
   const [loginData, setLoginData] = useState({
     email: "",
     password: ""
   })
-  const [showSignUp, setShowSignUp] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false)
   const LOGIN_API_PATH = `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_LOGIN_PATH}`
 
   const settings = {
@@ -28,7 +28,7 @@ const LoginForm = () => {
     slidesToScroll: 1,
     arrows: false,
     adaptiveHeight: true
-  };
+  }
 
   const fetchWithCache = async (url) => {
     
@@ -129,7 +129,8 @@ const LoginForm = () => {
             <span>Don’t have an account? <a onClick={() => setShowSignUp(true)}>Sign up</a></span>
           </div>
         </div>
-        <ModalComponent 
+        <ModalComponent
+          size='lg' 
           title='Sign up'
           show={showSignUp} 
           handleClose={() => setShowSignUp(false)} 

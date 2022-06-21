@@ -78,7 +78,7 @@ const AccountForm = ({ type = 'update' }) => {
   
   return (
     <div className={styles.UpdateAccountContainer}>
-      <h5>Account</h5>
+      {type !== 'Signup' && (<h5>Account</h5>)}
       <div className={styles.personalInformation}>
         <h6>Personal information</h6>
         <p className={styles.avatarLabel}>Avatar</p>
@@ -93,19 +93,19 @@ const AccountForm = ({ type = 'update' }) => {
         </div>
         <div className={styles.textFields}>
           <span className={styles.textFields_items}>
-            <p>First name</p>
+            <label>First name</label>
             <input ref={fname} type="text" placeholder='First name' onChange={(e) => handleOnChange(e, 'firstname')}/>
           </span>
           <span className={styles.textFields_items}>
-            <p>Last name</p>
+            <label>Last name</label>
             <input ref={lname} type="text" placeholder='Last name'  onChange={(e) => handleOnChange(e, 'lastname')}/>
           </span>
           <span className={styles.textFields_items}>
-            <p>Email</p>
+            <label>Email</label>
             <input ref={email} type="email" placeholder='Email' onChange={(e) => handleOnChange(e, 'email')}/>
           </span>
           <span className={styles.textFields_items}>
-            <p>Password</p>
+            <label>Password</label>
             <input ref={pass} type="password" placeholder='Password' onChange={(e) => handleOnChange(e, 'password')}/>
           </span>
         </div>

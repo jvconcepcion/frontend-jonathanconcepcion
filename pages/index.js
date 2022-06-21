@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react'
-import { getCookie, checkCookies  } from 'cookies-next';
+import { getCookie, checkCookies  } from 'cookies-next'
 import { baseCall } from '../helpers/api-fetcher'
 import Head from 'next/head'
 import NavComponent from '../components/Nav'
 import BannerComponent from '../components/Banner'
 import FoodCategory from '../components/Nav/Categories/FoodCategory'
 import NearbyRestaurants from '../components/NearbyRestaurant'
+import ModalComponent from '../components/Modal'
+import GroceryForm from '../components/Form/GroceryForm'
 import styles from '../styles/Main.module.scss'
 
 export default function Home() {
@@ -14,6 +16,11 @@ export default function Home() {
   const [groceries, setGroceries] = useState(null)
   const [orderItems, setOrderItems] = useState([])
   const [userOrder, setUserOrder] = useState([])
+  const [modalConfig, setModalConfig] = useState({
+    modalState: false,
+    modalTitle: '',
+    modalData: ''
+  })
   
   const LOGIN_API_PATH = `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_LOGIN_PATH}`
 
@@ -52,6 +59,14 @@ export default function Home() {
     ]))
   }
 
+  const handleModal = (title, bool, data = '') => {
+    setModalConfig(prevState => ({...prevState, 
+      modalState: bool,
+      modalTitle: title,
+      modalData: data
+    }))
+  }
+
   useEffect(() => {
     const loginState = checkCookies(LOGIN_API_PATH)
 
@@ -82,7 +97,16 @@ export default function Home() {
         selectedCategories={selectedCategories}
         groceries={groceries?.groceriesList}
         orderItems={orderItems}
+        handleModal={handleModal}
       />
+        <ModalComponent
+          size='sm' 
+          title={modalConfig.modalTitle}
+          show={modalConfig.modalState} 
+          handleClose={() => handleModal('', false)} 
+        >
+         <GroceryForm title={modalConfig.modalTitle} modalData={modalConfig.modalData}/>
+        </ModalComponent>
     </div>
   )
 }

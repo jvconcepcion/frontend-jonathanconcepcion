@@ -1,0 +1,70 @@
+@import '../variables.scss';
+
+.groceryFormContainer {
+  letter-spacing: 0.1px;
+
+  .textFields {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 15px;
+    
+    &_items {
+      display: flex;
+      flex-direction: column;
+      label {
+        color: $grayDark;
+        margin: 0 0 4px 0;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 16px;
+      }
+
+      input, .category {
+        width: 100%;
+        background-color: transparent;
+        border: solid 1px $grayLight;
+        border-radius: 8px;
+        padding: 15px 18px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        color: $black;
+      }
+
+      .category {
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  .btnWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+    width: 100%;
+    margin-top: 16px;
+
+    .discard, .save {
+      font-family: $defaultFont;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0.3px;
+      border-radius: 8px;
+      padding: 12px 0;
+    }
+
+    .discard {
+      background-color: transparent;
+      border: solid 1px $gray;
+      color: $gray;
+    }
+
+    .save {
+      background-color: $primaryColor;
+      border: none;
+      color: $white;
+    }
+  }
+
+}

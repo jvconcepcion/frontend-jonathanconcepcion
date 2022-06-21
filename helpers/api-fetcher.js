@@ -70,6 +70,25 @@ export async function updateUser(body) {
   return data
 }
 
+export async function updateGrocery(body) {
+
+  let { accessToken } = await newAccessToken()
+
+  let options = {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Token ${accessToken}`
+    },
+    body: JSON.stringify(body)
+  }
+
+  const res = await fetch('/api/grocery', options)
+  const data = await res.json()
+
+  return data
+}
+
 // PUT
 export async function registerUser(body) {
 
@@ -92,5 +111,49 @@ export async function registerUser(body) {
     alert('User Created!')
   } else {
     alert('Account already exists')
+  }
+}
+
+export async function addProduct(body) {
+
+  let { accessToken } = await newAccessToken()
+
+  let options = {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Token ${accessToken}`
+    },
+    body: JSON.stringify(body)
+  }
+
+  const res = await fetch('/api/grocery', options)
+  const data = await res.json()
+
+  return data
+}
+
+// DELETE
+export async function deleteProduct(body) {
+
+  let { accessToken } = await newAccessToken()
+
+  let options = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Token ${accessToken}`
+    },
+    body: JSON.stringify(body)
+  }
+
+  const res = await fetch('/api/grocery', options)
+
+  // const data = await res.json()
+
+  if(res.status === 200) {
+    window.location.reload()
+  } else {
+    alert('Error!')
   }
 }
