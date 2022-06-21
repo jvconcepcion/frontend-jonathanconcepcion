@@ -12,6 +12,10 @@ export default async function orderHandler(req, res) {
     const orderFetch = await fetch(GET_ORDER_API_PATH, options)
     const data = await orderFetch.json()
 
-    res.status(200).json(data)
+    if(orderFetch.status === 200) {
+      res.status(200).json(data)
+    } else {
+      res.status(orderFetch.status).json({ message: data.message })
+    }
   }
 }

@@ -42,7 +42,7 @@ const AccountSettings = () => {
 
       <div className={styles.grid}>
         <SettingsCategory />
-        <AccountForm />
+        <AccountForm type="update" />
       </div>
     </div>
   )
