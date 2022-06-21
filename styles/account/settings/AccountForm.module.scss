@@ -1,0 +1,221 @@
+@import '../../variables.scss';
+
+.UpdateAccountContainer {
+  letter-spacing: 0.1px;
+
+  h5 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    margin: 0 0 16px 0;
+    color: $black;
+  }
+
+  .personalInformation {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px $grayLightest;
+    border-radius: 16px;
+    padding: 24px 16px;
+
+    h6 {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 24px;
+      color: $black;
+      margin: 0 0 16px 0;
+    }
+
+    .avatarLabel {
+      margin: 0 0 10px 0;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 16px;
+      color: $gray;
+    }
+
+    .avatarWrapper {
+      display: flex;
+      align-items: center;
+
+      .avatar {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-right: 20px;
+
+        img {
+          border-radius: 10px;
+        }
+      }
+
+      .avatarAction {
+        display: flex;
+        align-items: center;
+
+        .change, .remove {
+          background-color: transparent ;
+          font-family: $defaultFont;
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 20px;
+          padding: 10px 12px;
+          border-radius: 10px;
+        }
+
+        .change {
+          color: $primaryColor;
+          margin-right: 20px;
+          border: solid 2px $primaryColor;
+        }
+
+        .remove {
+          color: $gray;
+          border: none;
+        }
+      }
+    }
+
+    .textFields {
+      display: grid;
+      grid-template-columns: 1fr;
+      row-gap: 25px;
+      margin: 20px 0 68px 0;
+
+      &_items {
+        p {
+          color: $grayDark;
+          margin: 0 0 4px 0;
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 16px;
+        }
+
+        input {
+          width: 100%;
+          background-color: transparent;
+          border: solid 1px $grayLight;
+          border-radius: 8px;
+          padding: 15px 18px;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 20px;
+          color: $black;
+        }
+      }
+    }
+  }
+
+  .notifWrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 25px;
+    margin-bottom: 40px;
+
+    &_item {
+      display: flex;
+      align-items: center;
+
+      input {
+        background-color: $primaryColor;
+        border-radius: 4px;
+        margin-right: 12px;
+      }
+
+      label {
+        margin: 0;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+  }
+
+  .btnWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &_logout {
+      font-family: $defaultFont;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0.3px;
+
+      background-color: transparent;
+      color: $error;
+      width: 100%;
+      border: solid 1px $error;
+      border-radius: 8px;
+      padding: 12px 0;
+      margin-bottom: 40px;
+    }
+
+    &_changes {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 16px;
+      width: 100%;
+
+      .discard, .save {
+        font-family: $defaultFont;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0.3px;
+        border-radius: 8px;
+        padding: 12px 0;
+      }
+
+      .discard {
+        background-color: transparent;
+        border: solid 1px $gray;
+        color: $gray;
+      }
+
+      .save {
+        background-color: $primaryColor;
+        border: none;
+        color: $white;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: $break_size_m) {
+  .UpdateAccountContainer {
+    .personalInformation {
+      .textFields {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 25px;
+      }
+    }
+
+    .notifWrapper { 
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 25px;
+    }
+    
+    .btnWrapper {
+      flex-direction: row;
+      justify-content: space-between;
+
+      &_logout {
+        padding: 12px;
+        margin-bottom: 0;
+        width: unset;
+      }
+
+      &_changes {
+        width: unset;
+        
+        .discard, .save {
+          padding: 12px;
+        }
+      }
+    }
+
+  }
+}
+

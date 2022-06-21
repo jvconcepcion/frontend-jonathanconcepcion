@@ -1,0 +1,16 @@
+@import "../variables.scss";
+
+.searchFieldContainer {
+  position: relative;
+  input {
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 42px 12px 12px;
+  }
+  span {
+    position: absolute;
+    top: 30%;
+    right: 5%;
+  }
+}

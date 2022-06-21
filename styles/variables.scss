@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,500;0,600;1,200;1,300;1,400;1,500;1,600&display=swap');
+
+$defaultFont: 'Nunito', sans-serif;
+
+// colors
+
+$primaryColor: #4E60FF;
+$secondaryColor: #FD6D22;
+$light: #F3F4FF;
+$white: #FFF;
+$black: #2B2B43;
+$grayLightest: #EDEEF2;
+$grayLight: #C7C8D2;
+$gray: #83859C;
+$grayDark: #545563;
+$error: #FF5C60;
+
+$defaultBGColor: #E5E5E5;
+$primaryBGColor: #697BFF;
+
+//media query
+$breakpoints: (
+  xll: 1700px,
+  xl: 1400px,
+  l: 1180px,
+  m: 1024px,
+  s: 768px,
+  xs: 414px,
+  xss: 375px,
+);
+
+// Breakpoint sizes when using @media min-width/max-width.
+$break_size_xll: map-get($breakpoints, "xll");
+$break_size_xl: map-get($breakpoints, "xl");
+$break_size_l: map-get($breakpoints, "l");
+$break_size_m: map-get($breakpoints, "m");
+$break_size_s: map-get($breakpoints, "s");
+$break_size_xs: map-get($breakpoints, "xs");
+$break_size_xss: map-get($breakpoints, "xss");

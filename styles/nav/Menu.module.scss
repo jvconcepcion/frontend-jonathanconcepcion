@@ -1,0 +1,20 @@
+@import "../variables.scss";
+
+.menuContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 22em;
+  list-style-type: none;
+
+  li {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+  }
+
+  .selected {
+    border-bottom: solid 1px;
+  }
+}

@@ -1,0 +1,27 @@
+@import "./variables.scss";
+
+.MainContainer {
+  background-color: $defaultBGColor;
+  margin: 0 15px;
+
+  .navWrapper {
+    margin-bottom: 40px;
+  }
+}
+
+@media only screen and (min-width: $break_size_m) {
+  .MainContainer {
+    background-color: $defaultBGColor;
+    margin: 0 150px;
+  
+    .navWrapper {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media only screen and (min-width: $break_size_xll) {
+  .MainContainer {
+    margin: 0 200px;
+  }
+}

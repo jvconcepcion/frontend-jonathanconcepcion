@@ -1,0 +1,55 @@
+@import '../../variables.scss';
+
+.settingsCategoryContainer {
+  letter-spacing: 0.1px;
+
+  h5 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    margin: 0 0 16px 0;
+    color: $black;
+  }
+
+  .cardWrapper {
+    display: flex;
+    align-items: center;
+    border: solid 1px $grayLightest;
+    border-radius: 16px;
+    padding: 0 16px;
+    margin-bottom: 16px;
+
+    .cardIcon {
+      display: flex;
+      align-items: center;
+      border-radius: 12px;
+      margin-right: 12px;
+      padding: 12px;
+    }
+
+    p {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 20px;
+      color: $black;
+
+      span {
+        display: block;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 18px;
+        letter-spacing: 0.2px;
+        color: $grayDark;
+      }
+    }
+  }
+
+  .selected {
+    border: solid 2px $primaryColor;
+    color: $white;
+
+    .cardIcon {
+      background-color: $primaryColor;
+    }
+  }
+}

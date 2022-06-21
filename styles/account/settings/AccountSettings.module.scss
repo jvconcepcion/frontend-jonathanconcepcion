@@ -1,0 +1,38 @@
+@import '../../variables.scss';
+
+.accountSettingsContainer {
+  background-color: $defaultBGColor;
+  margin: 0 15px;
+
+  .navWrapper {
+    margin-bottom: 40px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 36px;
+  }
+}
+
+@media only screen and (min-width: $break_size_m) {
+  .accountSettingsContainer {
+    background-color: $defaultBGColor;
+    margin: 0 150px;
+  
+    .navWrapper {
+      margin-bottom: 0;
+    }
+
+    .grid {
+      grid-template-columns: 40% 60%;
+      column-gap: 30px;
+    }
+  }
+}
+
+@media only screen and (min-width: $break_size_xll) {
+  .accountSettingsContainer {
+    margin: 0 200px;
+  }
+}
