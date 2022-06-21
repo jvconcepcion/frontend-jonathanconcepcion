@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { useRouter } from 'next/router'
-import { updateUser } from '../../helpers/api-fetcher'
+import { updateUser, registerUser } from '../../helpers/api-fetcher'
 import { removeSession } from '../../helpers/utils'
 import { notifications } from '../../helpers/stubs'
 import styles from '../../styles/account/settings/AccountForm.module.scss'
@@ -16,7 +16,7 @@ const CheckNotifications = ({ title = '' }) => {
   )
 }
 
-const AccountForm = () => {
+const AccountForm = ({ type = 'update' }) => {
 
   const router = useRouter()
   const fname = useRef(null)
@@ -25,6 +25,17 @@ const AccountForm = () => {
   const pass = useRef(null)
   const [accountInfo, setAccountInfo] = useState(null)
   const LOGIN_API_PATH = `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_LOGIN_PATH}`
+
+  function handleRegister () {
+    if(fname.current.value !== "" &&
+        lname.current.value !== "" &&
+        email.current.value !== "" &&
+        pass.current.value !== "") {
+          registerUser(accountInfo)
+    } else {
+      alert('Warning: Empty fields!')
+    }
+  }
 
   const handleOnChange = (e, fieldKey) => {
     if(e.target.value === ""){
@@ -46,13 +57,17 @@ const AccountForm = () => {
   }
 
   const handleSubmit = () => {
-    if(accountInfo !== null) {
-      if(confirm("Proceed to update?")) {
-        updateUser(accountInfo)
-        alert("Success")
-      } 
+    if(type === 'update') {
+      if(accountInfo !== null) {
+        if(confirm('Proceed to update?')) {
+          updateUser(accountInfo)
+          alert('Success')
+        } 
+      } else {
+        alert('Warning: Empty fields!')
+      }
     } else {
-      alert("Error:")
+      handleRegister()
     }
   }
 
@@ -99,7 +114,9 @@ const AccountForm = () => {
           {notifications.map((item, i) => <CheckNotifications key={i} title={item} />)}
         </div>
         <div className={styles.btnWrapper}>
-          <button onClick={handleLogout} className={styles.btnWrapper_logout}>Log out</button>
+          {type === 'update' && (
+            <button onClick={handleLogout} className={styles.btnWrapper_logout}>Log out</button>
+          )}
           <div className={styles.btnWrapper_changes}>
             <button onClick={handleDiscard} className={styles.discard}>Discard changes</button>
             <button onClick={handleSubmit} className={styles.save}>Save changes</button>
