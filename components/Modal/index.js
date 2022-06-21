@@ -1,6 +1,7 @@
 import { Modal, Button} from 'react-bootstrap'
 
 const ModalComponent = ({ 
+  size='sm',
   title = '',
   show = false,
   children,
@@ -14,7 +15,7 @@ const ModalComponent = ({
         onHide={handleClose}
         backdrop='static'
         keyboard={false}
-        size='lg'
+        size={size}
         centered
       >
         <Modal.Header closeButton>

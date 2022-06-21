@@ -2,7 +2,7 @@
 
 html,
 body {
-  background-color: $defaultBGColor;
+  background-color: $defaultBGColor !important;
   margin: 0;
   font-family: $defaultFont;
 }
