@@ -3,8 +3,8 @@ import { useRouter } from 'next/router'
 import { setCookies, checkCookies  } from 'cookies-next'
 import { handleKeepLogin } from '../../../helpers/utils'
 import Head from 'next/head'
-// import ModalComponent from '../../../components/Modal'
-// import AccountForm from '../../../components/Form/AccountForm'
+import ModalComponent from '../../../components/Modal'
+import AccountForm from '../../../components/Form/AccountForm'
 import styles from '../../../styles/account/login/LoginForm.module.scss'
 import Slider from "react-slick"
 
@@ -129,13 +129,13 @@ const LoginForm = () => {
             <span>Don’t have an account? <a onClick={() => setShowSignUp(true)}>Sign up</a></span>
           </div>
         </div>
-        {/* <ModalComponent 
+        <ModalComponent 
           title='Sign up'
           show={showSignUp} 
           handleClose={() => setShowSignUp(false)} 
         >
           <AccountForm type="Signup" />
-        </ModalComponent> */}
+        </ModalComponent>
       </div>
       <div className={styles.carouselContainer}>
       <Slider {...settings}>
