@@ -5,11 +5,13 @@ import Head from 'next/head'
 import NavComponent from '../../../components/Nav'
 import SettingsCategory from '../../../components/Nav/Categories/SettingsCategory'
 import AccountForm from '../../../components/Form/AccountForm'
+import Spinner from 'react-bootstrap/Spinner'
 import styles from '../../../styles/account/settings/AccountSettings.module.scss'
 
 const AccountSettings = () => {
 
   const [userOrder, setUserOrder] = useState([])
+  const [notMounted, setNotMounted] = useState(true);
 
   const LOGIN_API_PATH = `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_LOGIN_PATH}`
 
@@ -24,11 +26,11 @@ const AccountSettings = () => {
 
   useEffect(() => {
     const loginState = checkCookies(LOGIN_API_PATH)
-
+    setNotMounted(false);
     if (loginState) getOrderByUserId(loginState)
   }, [])
 
-  return (
+  return !notMounted && checkCookies(LOGIN_API_PATH) ? (
     <div className={styles.accountSettingsContainer}>
       <Head>
         <title>Account Setting</title>
@@ -45,7 +47,9 @@ const AccountSettings = () => {
         <AccountForm type="update" />
       </div>
     </div>
-  )
+  ) : ( <div className={styles.spinnerWrapper}>
+    <Spinner animation='border' variant='primary' size='xl'/>
+  </div>)
 }
 
 export default AccountSettings

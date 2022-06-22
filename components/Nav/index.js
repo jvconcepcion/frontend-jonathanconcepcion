@@ -4,14 +4,24 @@ import SearchFieldComponent from './SearchField'
 import MenuComponent from './Menu'
 import SettingsComponent from './Settings'
 
-const NavComponent = ({ userOrder, burgerListAction }) => {
+const NavComponent = ({ 
+  userOrder, 
+  orderItems, 
+  burgerListAction, 
+  handleModal
+ }) => {
+
   return (
     <ul className={styles.navContainer}>
       <li className={styles.searchContainer}>
         <SearchFieldComponent />
       </li>
       <li className={styles.menuContainer}>
-        <MenuComponent />
+        <MenuComponent 
+          orderItems={orderItems}
+          userOrder={userOrder}
+          handleModal={handleModal} 
+        />
       </li>
       <li className={styles.settingsContainer}>
         <SettingsComponent userOrder={userOrder} />
