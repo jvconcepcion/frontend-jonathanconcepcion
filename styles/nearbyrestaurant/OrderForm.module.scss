@@ -1,0 +1,80 @@
+@import '../variables.scss';
+
+.oderFormContainer {
+  letter-spacing: 0.1px;
+
+  .columnHeader {
+    margin-bottom: 10px;
+  }
+
+  .item {
+    display: grid;
+    grid-template-columns: 60% 20% 20%;
+    column-gap: 5px;
+
+    &_amount, &_total { 
+      text-align: center;
+    }
+
+    label, &_amount, &_total {
+      color: $grayDark;
+      margin: 0;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+
+  .totalPriceWrapper, .vatableSaleWrapper {
+    display: grid;
+    grid-template-columns: 60% 20% 20%;
+    column-gap: 5px;
+    width: 100%;
+    border-top: solid 1px $gray;
+    margin-top: 10px;
+    padding-top: 10px;
+
+    label {
+      color: $grayDark;
+      margin: 0;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 16px;
+      text-align: center;
+    }
+  }
+  
+  .vatableSaleWrapper {
+    border-top: none;
+  }
+
+  .btnWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+    width: 100%;
+    margin-top: 16px;
+
+    .discard, .save {
+      font-family: $defaultFont;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0.3px;
+      border-radius: 8px;
+      padding: 12px 0;
+    }
+
+    .discard {
+      background-color: transparent;
+      border: solid 1px $gray;
+      color: $gray;
+    }
+
+    .save {
+      background-color: $primaryColor;
+      border: none;
+      color: $white;
+    }
+  }
+}

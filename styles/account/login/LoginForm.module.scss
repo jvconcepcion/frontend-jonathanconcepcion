@@ -155,7 +155,7 @@
 @media only screen and (min-width: $break_size_m) {
   .grid {
     height: 100vh;
-    grid-template-columns: 48% 52%;
+    grid-template-columns: 40% 60%;
     .loginContainer {
       margin: 0 125px;
     }
@@ -174,7 +174,7 @@
   .grid {
     grid-template-columns: 40% 60%;
     .loginContainer {
-      margin: 0 160px;
+      margin: 0 150px;
     }
   }
 }
