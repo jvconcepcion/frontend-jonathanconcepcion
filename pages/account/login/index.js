@@ -5,8 +5,8 @@ import { handleKeepLogin } from '../../../helpers/utils'
 import Head from 'next/head'
 import ModalComponent from '../../../components/Modal'
 import AccountForm from '../../../components/Form/AccountForm'
+import AdsComponent from '../../../components/Carousel/Ads'
 import styles from '../../../styles/account/login/LoginForm.module.scss'
-import Slider from "react-slick"
 
 const LoginForm = () => {
 
@@ -19,16 +19,6 @@ const LoginForm = () => {
   })
   const [showSignUp, setShowSignUp] = useState(false)
   const LOGIN_API_PATH = `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_LOGIN_PATH}`
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    adaptiveHeight: true
-  }
 
   const fetchWithCache = async (url) => {
     
@@ -139,20 +129,6 @@ const LoginForm = () => {
         </ModalComponent>
       </div>
       <div className={styles.carouselContainer}>
-      <Slider {...settings}>
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-        </Slider>
       </div>
      
     </div>

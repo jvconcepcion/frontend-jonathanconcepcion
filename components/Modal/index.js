@@ -4,6 +4,7 @@ const ModalComponent = ({
   size='sm',
   title = '',
   show = false,
+  centered = true,
   children,
   handleClose = () => console.log("Close"),
 }) => {
@@ -16,7 +17,7 @@ const ModalComponent = ({
         backdrop='static'
         keyboard={false}
         size={size}
-        centered
+        centered={centered}
       >
         <Modal.Header closeButton>
           <Modal.Title>{title}</Modal.Title>

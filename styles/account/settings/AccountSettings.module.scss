@@ -13,6 +13,17 @@
     grid-template-columns: 1fr;
     margin-top: 36px;
   }
+
+  .spinnerWrapper {
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
+
+    [class^="spinner-border"] {
+      width: 10rem;
+      height: 10rem;
+    }
+  }
 }
 
 @media only screen and (min-width: $break_size_m) {

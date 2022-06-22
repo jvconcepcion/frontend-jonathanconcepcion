@@ -15,3 +15,20 @@ export function removeSession(url) {
   if(localStorage.getItem(url)) localStorage.removeItem(url)
   removeCookies(url)
 }
+
+export function sumObjValuesBy(data, key) {
+  return data
+    .map(item => item[key])
+    .reduce((a, b) => {
+      return a + b
+    }, 0)
+}
+
+export function orderComputation(total) {
+  const VAT = .12
+  let tax = total * VAT,
+      netAmount = total + tax
+
+  return netAmount
+
+}

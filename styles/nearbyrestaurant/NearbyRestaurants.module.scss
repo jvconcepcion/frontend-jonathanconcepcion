@@ -84,6 +84,30 @@
             color: $black;
             margin: 0;
           }
+
+          .addWrapper {
+            display: grid;
+            grid-template-columns: 70% 30%;
+
+            &_quantity {
+              margin-right: 14px;
+            }
+
+            &_quantity, &_addBtn {
+              font-family: $defaultFont;
+              font-weight: 700;
+              font-size: 14px;
+              line-height: 20px;
+              letter-spacing: 0.3px;
+              border-radius: 5px;
+              padding: 10px;
+            }
+
+            // &_addBtn {
+            //   border-radius: 5px;
+            //   padding: 10px;
+            // }
+          }
           
           span {
             position: relative;
@@ -147,6 +171,10 @@
       }
     }
   }
+}
+
+.close {
+  float: right;
 }
 
 @media only screen and (min-width: $break_size_m) {
